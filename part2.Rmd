@@ -1,0 +1,27 @@
+---
+title: "Intro to time series wrangling and viz"
+author: "AJ Zekanoski"
+date: "2/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(lubridate)
+library(tsibble)
+library(feasts)
+library(slider)
+```
+
+
+## Read in the data
+
+```{r}
+toolik <- read_csv(here("data",
+                        "toolikweather.csv"))
+
+```
+
+### Convert this into a tsibble
