@@ -58,4 +58,29 @@ toolik_weekly <- toolik_ts %>%
   summarise(weekly_airtemp = mean(mean_airtemp, na.rm = TRUE))
 ```
 
+## Filtering time series
+
+Use `filter_index()` to specify ranges of time series to keep or exclude.
+
+```{r}
+toolik_ts %>% 
+  filter_index("2000-06" ~ "2001-10")
+```
+
+```{r}
+toolik_ts %>% 
+  filter_index("2006-04-10" ~ "2006-05-15")
+```
+
+## Seasonplots
+
+```{r}
+toolik_ts %>% 
+  filter(year(date) > 2014) %>% 
+  gg_season(y = mean_airtemp)
+
+toolik_month %>% 
+  gg_season(y = monthly_mean_temp) +
+  theme_light()
+```
 
